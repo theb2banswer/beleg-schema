@@ -71,7 +71,3 @@ Eine Quelle ist eine Zeile in `sources.yaml` mit `slug`, `url`, `gewicht`, `gele
 ## Was hier nicht steht
 
 Die 139 bewerteten Aussagen zur Sichtbarkeit in ChatGPT, die Messdaten dahinter und die vollständige Quellenliste. Das Schema ist die Methode, die Daten sind die Arbeit.
-
-## Vortrag
-
-„404 Beleg not found: Ein Punktesystem für alles, was man mir erzählt“, eingereicht für den Digital Crafts Day 2027 in Weiden. Fragen und Erfahrungen mit dem Schema gern als Issue hier oder an oliver@theb2banswer.de.
