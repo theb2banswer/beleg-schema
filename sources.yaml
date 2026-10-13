@@ -1,0 +1,23 @@
+# Quellen, die der monatliche Lauf abruft. Beispiel mit öffentlichen Seiten; eigene Quellen hier eintragen.
+#
+# slug     Dateiname unter sources/
+# url      öffentliche Adresse
+# link     Zeile in der eigenen Wissensbasis (Notion, Wiki, Tabelle) oder null
+# gewicht  Quellengewicht G0 … G5 (siehe README), „monitoring" (nur ablegen) oder „sammlung" (Fundgrube, öffnet ein Issue)
+# gelesen  Datum der Fassung, auf die sich die Aussage stützt (oder null)
+
+- slug: google-spam-policies
+  url: https://developers.google.com/search/docs/essentials/spam-policies
+  link: null
+  gewicht: G0
+  gelesen: 2026-10-06
+- slug: google-ai-optimization-guide
+  url: https://developers.google.com/search/docs/fundamentals/ai-optimization-guide
+  link: null
+  gewicht: G0
+  gelesen: 2026-10-06
+- slug: google-search-updates
+  url: https://developers.google.com/search/updates
+  link: null
+  gewicht: monitoring
+  gelesen: null

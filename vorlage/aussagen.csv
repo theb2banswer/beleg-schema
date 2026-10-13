@@ -1,0 +1,4 @@
+Aussage;Quellengewicht;Konfidenz;Erstbeobachtung;Zuletzt bestätigt;Status;Quelle;Notiz
+"Framework X ist in unserem Lasttest 30 % schneller als Y";G1;C1;2026-09-02;2026-09-02;aktiv;eigener Benchmark, Skript im Repo, 5 Läufe;Nur für unseren Workload gemessen
+"Listen-Artikel werden von KI-Suche häufiger zitiert";G3;C2;2026-05-14;2026-08-20;Beobachtung;Blogbeitrag eines Tool-Anbieters, Primärdaten nicht einsehbar;Anbieter verkauft ein Content-Tool
+"Diese UX-Regel gilt immer";G5;C3;2026-03-01;;zurückgezogen;gehört, keine Quelle;Nach eigener Nachmessung gestrichen
