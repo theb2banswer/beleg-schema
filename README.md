@@ -49,12 +49,16 @@ Gewicht und Konfidenz sind getrennt. Eine eigene Messung (G1) mit kleiner Stichp
 3. Vergleiche nur mit denselben Fragen und demselben Instrument.
 4. Jede Messung trägt eine Methodenzeile: Datum, Stichprobe, Läufe, Instrument, Grenzen.
 5. Jeder Messfehler bekommt eine Zeile im Fehlerlog, eine je Ursache, damit er nicht zweimal passiert.
+6. Listenfragen an KI-Systeme („Welche Anbieter …“) zählen erst nach mindestens fünf Läufen je Frage als Messung. Markenfragen („Wer ist …“) sind stabil, Listenfragen nicht.
+7. Quellen zählen, nicht Kanäle. Dieselbe Person mit derselben Aussage auf LinkedIn, im Podcast und im Blog ist eine Stimme. Quellen, die sich gegenseitig zitieren, zählen zusammen höchstens anderthalb. Wer an der Aussage verdient, zählt halb. Vor jedem „alle sagen das“ fragen: Wer würde widersprechen? Gibt es niemanden, ist es keine Übereinstimmung, sondern eine Blase.
+8. Was ein KI-Agent bewertet hat, zählt bis zur Durchsicht durch einen Menschen höchstens C2. Ausgenommen sind Aussagen mit Gewicht G0 oder G1.
+9. Ändert eine Quelle oder Messung eine Überzeugung, kommt eine Zeile ins Umgestimmt-Log: Datum, Auslöser, vorher, nachher. Nur anhängen, nie umschreiben.
 
 ## Vorlage
 
-`vorlage/aussagen.csv` ist eine Tabelle mit den Spalten Aussage, Quellengewicht, Konfidenz, Erstbeobachtung, Zuletzt bestätigt, Status, Quelle, Notiz und drei Beispielzeilen. In Notion, Airtable oder einer Tabellenkalkulation importieren, Gewicht und Konfidenz als Auswahlfelder anlegen, fertig.
+`vorlage/aussagen.csv` ist eine Tabelle mit den Spalten Aussage, Quellengewicht, Konfidenz, Erstbeobachtung, Zuletzt bestätigt, Status, Geprüft von (Mensch oder Agent), Quelle, Notiz und drei Beispielzeilen. In Notion, Airtable oder einer Tabellenkalkulation importieren, Gewicht und Konfidenz als Auswahlfelder anlegen, fertig.
 
-Nützliche Ansichten: „Überfällig“ (aktiv, Zuletzt bestätigt älter als sechs Monate, älteste zuerst) und „Publizierbar“ (G0 bis G2, aktiv).
+Nützliche Ansichten: „Überfällig“ (aktiv, Zuletzt bestätigt älter als sechs Monate, älteste zuerst), „Publizierbar“ (G0 bis G2, aktiv) und „Durchsicht offen“ (Geprüft von Agent).
 
 ## Quellen monatlich prüfen
 
