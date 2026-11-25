@@ -44,7 +44,7 @@ The row is in `vorlage/aussagen.csv`.
 
 ## Template and script
 
-`vorlage/aussagen.csv` is comma-separated, UTF-8, German headers. Import into Notion, Airtable or a spreadsheet. `fetch.py` pulls the pages in `sources.yaml` monthly and opens an issue when a G0 to G2 source changes. Details in German below.
+`vorlage/aussagen.csv` is comma-separated, UTF-8, German headers, with an ID and a keyword column so agents can cite rows and find them under other words. Import into Notion, Airtable or a spreadsheet. `AGENTS.md` holds the answer rules for any model working with the table. `intake.md` describes how new material becomes scored claims. `fetch.py` pulls the pages in `sources.yaml` monthly and opens an issue when a G0 to G2 source changes. Details in German below.
 
 ## Using it on GitHub
 
@@ -133,7 +133,15 @@ Aussage: „Eine llms.txt bringt dich in die KI-Suche.“
 
 ## Vorlage
 
-`vorlage/aussagen.csv` ist eine Tabelle, getrennt mit Komma, UTF-8 (in Excel über „Daten > Aus Text/CSV“ öffnen), mit den Spalten Aussage, Quellengewicht, Konfidenz, Geltungsbereich, Aufstieg wenn, Verfällt wenn, Erstbeobachtung, Zuletzt bestätigt, Status, Geprüft von (Mensch oder Agent), Quelle, Notiz und vier Beispielzeilen, darunter das Beispiel oben. In Notion, Airtable oder einer Tabellenkalkulation importieren, Gewicht und Konfidenz als Auswahlfelder anlegen, fertig.
+`vorlage/aussagen.csv` ist eine Tabelle, getrennt mit Komma, UTF-8 (in Excel über „Daten > Aus Text/CSV“ öffnen), mit den Spalten ID, Aussage, Stichwörter, Quellengewicht, Konfidenz, Geltungsbereich, Aufstieg wenn, Verfällt wenn, Erstbeobachtung, Zuletzt bestätigt, Status, Geprüft von (Mensch oder Agent), Quelle, Notiz und vier Beispielzeilen, darunter das Beispiel oben. In Notion, Airtable oder einer Tabellenkalkulation importieren, Gewicht und Konfidenz als Auswahlfelder anlegen, fertig.
+
+- **ID** (`A-001`): damit Agenten und Pull Requests eine Zeile genau nennen können, auch nach einer Umformulierung. Nie neu vergeben.
+- **Stichwörter:** Synonyme und andere Schreibweisen („llms.txt, KI-Datei, AI text file“). Die häufigste Ursache, dass eine Suche nichts findet, ist eine andere Wortwahl in der Frage.
+
+## Für Agenten und den Eingang
+
+- `AGENTS.md`: Antwortregeln für jedes Modell, das mit der Tabelle arbeitet (Claude Code, Codex, Cursor, ChatGPT). Jede Aussage mit ID, Gewicht, Konfidenz, Status und Datum; Zurückgezogenes benennen; außerhalb des Geltungsbereichs „ungemessen“; neue Zeilen nur per Pull Request.
+- `intake.md`: wie neues Material (Artikel, Podcast, Studie, Transkript) zu bewerteten Aussagen wird, ohne dass die Wissensbasis aufbläht. Dazu die Form der wiederkehrenden Prüfschritte und die Kürzel-Regel.
 
 Nützliche Ansichten: „Überfällig“ (aktiv, Zuletzt bestätigt älter als sechs Monate, älteste zuerst), „Publizierbar“ (G0 bis G2, aktiv) und „Durchsicht offen“ (Geprüft von Agent).
 
@@ -143,7 +151,7 @@ Die Aussagen liegen als CSV in einem Repository, GitHub übernimmt den Rest:
 
 - **Tabellenansicht:** GitHub zeigt die CSV als durchsuchbare Tabelle, mit Verlauf je Zeile über die Commits.
 - **Durchsicht als Pull Request:** Ein Agent legt neue Zeilen per PR an (`Geprüft von: Agent`, höchstens C2). Du prüfst, hebst die Konfidenz, mergst. Der PR ist der Nachweis für Regel 8.
-- **Automatische Prüfung:** `pruefen.py` läuft bei jedem Push und PR auf `vorlage/` und einmal im Monat (`.github/workflows/pruefen.yml`). Es bricht ab bei ungültigen Werten, bei Agent-Zeilen über C2 und bei zurückgezogenen Zeilen ohne Grund. Überfällige Zeilen und Zeilen ohne Geltungsbereich stehen als Hinweis in der Zusammenfassung des Laufs.
+- **Automatische Prüfung:** `pruefen.py` läuft bei jedem Push und PR auf `vorlage/` und einmal im Monat (`.github/workflows/pruefen.yml`). Es bricht ab bei fehlender oder doppelter ID, bei ungültigen Werten, bei Agent-Zeilen über C2 und bei zurückgezogenen Zeilen ohne Grund. Überfällige Zeilen und Zeilen ohne Geltungsbereich stehen als Hinweis in der Zusammenfassung des Laufs.
 - **Quellenänderung als Issue:** Der Monatslauf von `fetch.py` öffnet ein Issue, wenn sich eine Quelle mit G0 bis G2 ändert (siehe unten).
 
 ```
@@ -171,4 +179,4 @@ Schema, Vorlage und Skripte: MIT (siehe `LICENSE`). Die Texte unter `sources/` s
 
 ## Was hier nicht steht
 
-Die 139 bewerteten Aussagen zur Sichtbarkeit in ChatGPT, die Messdaten dahinter und die vollständige Quellenliste. Das Schema ist die Methode, die Daten sind die Arbeit.
+Die rund 190 bewerteten Aussagen zur Sichtbarkeit in ChatGPT (Stand November 2026), die Messdaten dahinter und die vollständige Quellenliste. Das Schema ist die Methode, die Daten sind die Arbeit.

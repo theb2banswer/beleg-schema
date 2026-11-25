@@ -1,12 +1,14 @@
 """Prüft vorlage/aussagen.csv (oder eine andere Datei) gegen die Regeln aus dem README.
 
 Fehler (Exit-Code 1):
+  - ID fehlt oder kommt doppelt vor
   - Gewicht oder Konfidenz außerhalb von G0 bis G5 und C1 bis C3
   - Status nicht aktiv, Beobachtung oder zurückgezogen
   - Regel 8: von einem Agenten bewertet, C1, aber nicht G0
   - zurückgezogen ohne Grund in Notiz oder Quelle
 
 Hinweise (kein Fehler):
+  - ohne Stichwörter
   - aktiv und seit mehr als sechs Monaten nicht bestätigt (überfällig)
   - ohne Geltungsbereich
 
@@ -30,6 +32,7 @@ def pruefen(pfad: str) -> int:
     with open(pfad, encoding="utf-8", newline="") as f:
         zeilen = list(csv.DictReader(f))
 
+    gesehen = set()
     for nr, z in enumerate(zeilen, start=2):  # Zeile 1 ist die Kopfzeile
         name = (z.get("Aussage") or "").strip()[:60]
         g = (z.get("Quellengewicht") or "").strip()
@@ -37,6 +40,14 @@ def pruefen(pfad: str) -> int:
         s = (z.get("Status") or "").strip()
         wer = (z.get("Geprüft von") or "").strip()
 
+        zid = (z.get("ID") or "").strip()
+        if not zid:
+            fehler.append(f"Zeile {nr} ({name}): ID fehlt")
+        elif zid in gesehen:
+            fehler.append(f"Zeile {nr} ({name}): ID {zid} doppelt")
+        gesehen.add(zid)
+        if not (z.get("Stichwörter") or "").strip():
+            hinweise.append(f"Zeile {nr} ({name}): keine Stichwörter")
         if g not in GEWICHTE:
             fehler.append(f"Zeile {nr} ({name}): Quellengewicht „{g}“ unbekannt")
         if c not in KONFIDENZ:
