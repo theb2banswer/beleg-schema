@@ -44,7 +44,16 @@ The row is in `vorlage/aussagen.csv`.
 
 ## Template and script
 
-`vorlage/aussagen.csv` is semicolon-separated, UTF-8, German headers. Import into Notion, Airtable or a spreadsheet. `fetch.py` pulls the pages in `sources.yaml` monthly and opens an issue when a G0 to G2 source changes. Details in German below.
+`vorlage/aussagen.csv` is comma-separated, UTF-8, German headers. Import into Notion, Airtable or a spreadsheet. `fetch.py` pulls the pages in `sources.yaml` monthly and opens an issue when a G0 to G2 source changes. Details in German below.
+
+## Using it on GitHub
+
+Keep your claims as a CSV in a repo and GitHub does the rest:
+
+- **Table view:** GitHub renders the CSV as a searchable table, with history per row through the commit log.
+- **Human check as pull request:** an agent opens a PR with new rows (`Geprüft von: Agent`, at most C2). You review, raise the confidence, merge. The PR is the record of rule 8.
+- **Automatic check:** `pruefen.py` runs on every push and PR and once a month. It fails on invalid values and on agent rows above C2, and lists overdue rows and rows without scope in the job summary.
+- **Source changes as issues:** the monthly `fetch.py` run opens an issue when a G0 to G2 source changes.
 
 ---
 
@@ -124,9 +133,25 @@ Aussage: „Eine llms.txt bringt dich in die KI-Suche.“
 
 ## Vorlage
 
-`vorlage/aussagen.csv` ist eine Tabelle, getrennt mit Semikolon, UTF-8, mit den Spalten Aussage, Quellengewicht, Konfidenz, Geltungsbereich, Aufstieg wenn, Verfällt wenn, Erstbeobachtung, Zuletzt bestätigt, Status, Geprüft von (Mensch oder Agent), Quelle, Notiz und vier Beispielzeilen, darunter das Beispiel oben. In Notion, Airtable oder einer Tabellenkalkulation importieren, Gewicht und Konfidenz als Auswahlfelder anlegen, fertig.
+`vorlage/aussagen.csv` ist eine Tabelle, getrennt mit Komma, UTF-8 (in Excel über „Daten > Aus Text/CSV“ öffnen), mit den Spalten Aussage, Quellengewicht, Konfidenz, Geltungsbereich, Aufstieg wenn, Verfällt wenn, Erstbeobachtung, Zuletzt bestätigt, Status, Geprüft von (Mensch oder Agent), Quelle, Notiz und vier Beispielzeilen, darunter das Beispiel oben. In Notion, Airtable oder einer Tabellenkalkulation importieren, Gewicht und Konfidenz als Auswahlfelder anlegen, fertig.
 
 Nützliche Ansichten: „Überfällig“ (aktiv, Zuletzt bestätigt älter als sechs Monate, älteste zuerst), „Publizierbar“ (G0 bis G2, aktiv) und „Durchsicht offen“ (Geprüft von Agent).
+
+## Mit GitHub arbeiten
+
+Die Aussagen liegen als CSV in einem Repository, GitHub übernimmt den Rest:
+
+- **Tabellenansicht:** GitHub zeigt die CSV als durchsuchbare Tabelle, mit Verlauf je Zeile über die Commits.
+- **Durchsicht als Pull Request:** Ein Agent legt neue Zeilen per PR an (`Geprüft von: Agent`, höchstens C2). Du prüfst, hebst die Konfidenz, mergst. Der PR ist der Nachweis für Regel 8.
+- **Automatische Prüfung:** `pruefen.py` läuft bei jedem Push und PR auf `vorlage/` und einmal im Monat (`.github/workflows/pruefen.yml`). Es bricht ab bei ungültigen Werten, bei Agent-Zeilen über C2 und bei zurückgezogenen Zeilen ohne Grund. Überfällige Zeilen und Zeilen ohne Geltungsbereich stehen als Hinweis in der Zusammenfassung des Laufs.
+- **Quellenänderung als Issue:** Der Monatslauf von `fetch.py` öffnet ein Issue, wenn sich eine Quelle mit G0 bis G2 ändert (siehe unten).
+
+```
+python pruefen.py                    # prüft vorlage/aussagen.csv
+python pruefen.py meine-aussagen.csv # eigene Datei
+```
+
+Für die eigene Wissensbasis: Datei kopieren, im Workflow den Pfad ändern, Repository privat lassen.
 
 ## Quellen monatlich prüfen
 
@@ -142,7 +167,7 @@ Eine Quelle ist eine Zeile in `sources.yaml` mit `slug`, `url`, `gewicht`, `gele
 
 ## Lizenz
 
-Schema, Vorlage und Skript: MIT (siehe `LICENSE`). Die Texte unter `sources/` sind Abrufe von Google Search Central, © Google, lizenziert unter [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/); die Quelle steht oben in jeder Datei. Sie fallen nicht unter die MIT-Lizenz.
+Schema, Vorlage und Skripte: MIT (siehe `LICENSE`). Die Texte unter `sources/` sind Abrufe von Google Search Central, © Google, lizenziert unter [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/); die Quelle steht oben in jeder Datei. Sie fallen nicht unter die MIT-Lizenz.
 
 ## Was hier nicht steht
 

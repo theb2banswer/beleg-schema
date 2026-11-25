@@ -1,0 +1,24 @@
+name: Aussagen prüfen
+
+on:
+  push:
+    paths: ["vorlage/**", "pruefen.py"]
+  pull_request:
+    paths: ["vorlage/**", "pruefen.py"]
+  schedule:
+    - cron: "17 6 1 * *" # monatlich am 1. um 06:17 UTC, nach dem Quellen-Abruf
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pruefen:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python pruefen.py vorlage/aussagen.csv
