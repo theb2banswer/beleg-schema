@@ -12,7 +12,7 @@ By [Oliver Bock](https://theb2banswer.de), The B2B Answer. Built to answer which
 
 Every claim gets:
 
-- **Source weight G0 to G5:** G0 platform doctrine read at the source · G1 own measurement · G2 third-party study with the primary source checked · G3 vendor research or partly checked · G4 single practitioner or client account · G5 secondhand or unchecked. Only G0 to G2 is publishable.
+- **Source weight G0 to G5:** G0 the platform's own statement, read at the source · G1 own measurement · G2 third-party study with the primary source checked · G3 vendor research or partly checked · G4 single practitioner or client account · G5 secondhand or unchecked. Only G0 to G2 is publishable.
 - **Confidence C1 to C3:** C1 proven (disclosed method and a clear mechanism, plus several independent voices or an own measurement over at least 30 days, no counter-evidence) · C2 plausible · C3 hunch. Weight and confidence are separate.
 - **Scope:** where the claim holds (market, language, industry, platform) and where it was never measured.
 - **Promotion and expiry condition:** what would lift it to C1, and what would kill it.
