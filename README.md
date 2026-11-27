@@ -73,7 +73,7 @@ Jede Aussage bekommt sechs Angaben.
 
 | Gewicht | Bedeutung | Beispiel |
 |---|---|---|
-| **G0** | Plattformdoktrin, Primärquelle gelesen | Offizielle Dokumentation des Herstellers oder der Plattform |
+| **G0** | Angabe der Plattform selbst, an der Quelle gelesen | Offizielle Dokumentation des Herstellers oder der Plattform |
 | **G1** | Eigene Messung | Eigener Benchmark, eigene Stichprobe, Rohdaten und Skript liegen vor |
 | **G2** | Fremdstudie mit geprüfter Primärquelle | Studie, deren Methode und Daten ich selbst gelesen habe |
 | **G3** | Anbieterforschung oder teilweise geprüft | Studie eines Anbieters, der mit dem Ergebnis etwas verkauft; Primärdaten nicht einsehbar |
@@ -86,7 +86,7 @@ Publizierbar ist nur G0 bis G2. Alles andere bleibt intern, mit Etikett.
 
 | Konfidenz | Bedeutung |
 |---|---|
-| **C1** belegt | Offengelegte Methode und klarer Mechanismus, dazu mehrere unabhängige Stimmen oder eine eigene Messung über mindestens 30 Tage; keine Gegenbelege. Plattformdoktrin (G0) reicht für das, was die Plattform über sich selbst sagt. |
+| **C1** belegt | Offengelegte Methode und klarer Mechanismus, dazu mehrere unabhängige Stimmen oder eine eigene Messung über mindestens 30 Tage; keine Gegenbelege. Eine eigene Angabe der Plattform (G0) reicht für das, was sie über sich selbst sagt. |
 | **C2** plausibel | Mehrere G3/G4-Quellen in dieselbe Richtung, oder eine G2-Quelle mit Einschränkungen |
 | **C3** Vermutung | Eine Quelle, oder Quellen widersprechen sich |
 
@@ -118,7 +118,7 @@ Was die Aussage auf C1 heben würde und was sie streicht. So wird aus einer Note
 5. Jeder Messfehler bekommt eine Zeile im Fehlerlog, eine je Ursache, damit er nicht zweimal passiert.
 6. Listenfragen an KI-Systeme („Welche Anbieter …“) zählen erst nach mindestens fünf Läufen je Frage als Messung. Markenfragen („Wer ist …“) sind stabil, Listenfragen nicht.
 7. Quellen zählen, nicht Kanäle. Dieselbe Person mit derselben Aussage auf LinkedIn, im Podcast und im Blog ist eine Stimme. Quellen, die sich gegenseitig zitieren, zählen zusammen höchstens anderthalb. Wer an der Aussage verdient, zählt halb. Vor jedem „alle sagen das“ fragen: Wer würde widersprechen? Gibt es niemanden, ist es keine Übereinstimmung, sondern eine Blase.
-8. Was ein KI-Agent bewertet hat, zählt bis zur Durchsicht durch einen Menschen höchstens C2. Ausgenommen ist nur Plattformdoktrin (G0).
+8. Was ein KI-Agent bewertet hat, zählt bis zur Durchsicht durch einen Menschen höchstens C2. Ausgenommen sind nur Angaben der Plattform selbst (G0).
 9. Ändert eine Quelle oder Messung eine Überzeugung, kommt eine Zeile ins Umgestimmt-Log: Datum, Auslöser, vorher, nachher. Nur anhängen, nie umschreiben.
 10. Zahlen kommen aus Code über den vollständigen Datensatz, und Zeilenzahl und Zeilensumme stehen gegen die Gesamtsumme, bevor gedeutet wird. Search Console, Ahrefs und jede gekappte Schnittstelle liefern nur die oberen Zeilen.
 
